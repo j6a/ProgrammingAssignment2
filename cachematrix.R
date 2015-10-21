@@ -22,7 +22,7 @@ makeCacheMatrix <- function(A = matrix()) {
   ## setInverse function: sets the inverse to a new value - inverse
   ## NOTE: This may not be the actual inverse of the matrix passed to
   ##       the function. The inverse will be set to whatever is passed
-  ##      as an argument to this funtion.
+  ##       as an argument to the get function.
   setInverse <- function(inverse) I <<- inverse
   
   ## getInverse function: gets the current value of the inverse.
@@ -36,7 +36,7 @@ makeCacheMatrix <- function(A = matrix()) {
 
 
 ## cacheSolve is a function that is passed a list object, which has been created
-## by the makeCacheMarix funtion)
+## by the makeCacheMarix funtion
 ## The function either returns the cached matrix inverse, or, if there is nothing
 ## in the cache, it calculates the new matrix inverse and writes it to the cache
 
@@ -51,8 +51,12 @@ cacheSolve <- function(x, ...) {
   ## If there isn't anything stored in the cache, then calculate the inverse again,
   ## and store in the cache (I)
   ## NOTE: As per the assignment brief, it is assumed that the matrix is always 
-  ##      invertible. One way to check for a non-invertible i.e. singular matrix
-  ##      is to check that the matrix determinant is non-zero. 
+  ##       invertible. One way to check for a non-invertible i.e. singular matrix
+  ##       is to check that the matrix determinant is non-zero.
+  ## 
+  ## NOTE: If the setInverse() function was used to set a value for the inverse,
+  ##       this function will pull it out of the cache and return it. It is
+  ##       possible that the Inverse was set incorrectly.
   
   ## get the matrix
   data <- x$get()
